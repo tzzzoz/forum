@@ -1,0 +1,27 @@
+<%= div_for question do %>
+	<div class="money">
+		<%= cny(question.sum) %>
+	</div>
+	<div class="topics">
+		<% question.topics.each do |topic| %>
+			<div class="topic"><%= topic.name %></div>
+		<% end %>
+	</div>
+	<div class="user_summary">
+		<span class="username"><%= question.user.name %></span>
+		<span class="timestamp"><%= question.created_at.strftime("%l:%M %p").downcase %></span>
+	</div>
+	<div class="excerpt">
+		<%= safe_html question.markdown4short %>
+	</div>
+	<% if question.answers.present? %>
+		<h1><%= question.answers.count %> Answers</h1>
+	<% end %>
+	<div id="answers">
+		<%= render :partial => "partials/answer", :collection => question.answers %>
+	</div>
+	<% if !question.answers.where(:user_id => current_user.id).present? and question.user != current_user %>
+		<h1>Send Your Answer</h1>
+		<%= render @answer = question.answers.build %>
+	<% end %>
+<% end %>

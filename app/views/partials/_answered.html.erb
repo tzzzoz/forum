@@ -1,0 +1,25 @@
+<% question = answer.question %>
+<div id="item_<%= question.id %>" class="item">
+	<div class="item_stats">
+		<div class="item_amount">
+			<div class="item_amount_count"><%= question.max %></div>
+			<div class="item_amount_count_word"><%= t('item_amount_count_word') %></div>
+		</div>
+		<div class="item_answer <%= question.answer_stats %>">
+			<div class="item_answer_count"><%= question.answers.count %></div>
+			<div class="item_answer_count_word"><%= t('item_answer_count_word') %></div>
+		</div>
+	</div>
+	<div class="item_summary">
+		<div class="item_row">
+			<div class="item_text"><%=link_to question.excerpt, question %></div>
+		</div>
+		<div class="item_row">
+			<div class="simplest_topics">
+				<%= question.topics.map {|topic| content_tag(:span, topic.name, :class => "item_topic")}.to_sentence.html_safe %>
+				<span class="bullet"> · </span>
+				<span class="item_timestamp" title=""><%= time_ago_in_words question.created_at %><%= t 'ago' %></span>
+			</div>
+		</div>
+	</div>
+</div>

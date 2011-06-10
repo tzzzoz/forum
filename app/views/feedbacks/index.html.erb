@@ -1,0 +1,6 @@
+<div id="content">
+	<%= link_to "New feedback", new_feedback_path%>
+	<div id="feedbacks">
+		<%= render :partial => "partials/feedbacks_list", :collection => @feedbacks, :as => :feedback %>
+	</div>
+</div>

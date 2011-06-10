@@ -1,0 +1,3 @@
+<%= form_tag({:controller => "topics", :action => "create"}, :remote => true, :id => "new_topic") do %>
+	<%= text_field_tag :topic, {}, :autocomplete => autocomplete_topic_name_topics_path, :class => "autocomplete auto" %>
+<% end %>

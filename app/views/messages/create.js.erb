@@ -1,0 +1,2 @@
+$("#new_message")[0].reset();
+$("#messages").prepend("<%= escape_javascript(render 'partials/message', :message => @message)%>");

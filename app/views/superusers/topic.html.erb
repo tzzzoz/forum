@@ -1,0 +1,14 @@
+<table>
+	<tbody>
+		<tr>
+		<th>Topic</th>
+		<th>Accepted</th>
+		</tr>
+	<% @topics.each do |topic| %>
+		<tr id="<%= topic.id %>">
+			<td><%= render "topics/update_topic", :topic => topic %></td>
+			<td class="td_accepted"></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>

@@ -1,0 +1,7 @@
+<%
+	if anonymous
+		user.name = t "anonymous"
+		user.headline = t "anonymous_man"
+	end
+%>
+<div class="person"><%= user.name %><span class="headline"><%= user.headline %></span></div>

@@ -1,0 +1,10 @@
+<% if current_user.notifications.present? %>
+<div class="subheader">
+	<h1>Notifications</h1>
+</div>
+<ul>
+<% current_user.notifications.each do |notification| %>
+	<li><%= "#{notification.person_name} #{t notification.did}" %> <%= link_to notification.excerpt, notification.model.classify.constantize.find(notification.instance_id) %></li>
+<% end %>
+</ul>
+<% end %>

@@ -1,0 +1,31 @@
+<%
+	if answer.id == answer.question.accepted_answer
+		accepted = "accepted"
+	else
+		accepted = ""
+	end
+%>
+<%= div_for(answer, :class => accepted) do %>
+	<div class="post">
+		<div class="post_row">
+			<%= render 'partials/name_headline', :user => answer.user, :anonymous => answer.anonymous %>
+		</div>
+		<div class="post_text">
+			<div><%= safe_html answer.markdown %></div>
+		</div>
+		<div class="post_row">
+			<div class="operation">
+				<%= link_to t('reply'), new_answer_comment_url(:answer_id => answer.id), :remote => true, :id => 'reply' %>
+				<span class="bullet"> · </span>
+				<% if answer.question.accepted_answer == nil and answer.question.user.id == current_user.id %>
+					<%= link_to t('to_accept'), accept_answer_url(:id => answer.id) %><span class="bullet"> · </span>
+				<% end -%>
+				<span class="post_timestamp"><%= answer.created_at.strftime("%l:%M %p").downcase %></span>
+			</div>
+			<div class="comments">
+				<%= render :partial => "partials/comment", :collection => answer.comments %>
+			</div>
+			<%= render "comments/comment", :m0del => answer %>
+		</div>
+	</div>
+<% end %>

@@ -1,0 +1,8 @@
+<div class="subheader">
+	<h1><%= @topic.name %></h1>
+</div>
+<div id="content">
+	<div id="questions">
+		<%= render :partial => "partials/list", :collection => @tagged_questions, :as => :question %>
+	</div>
+</div>

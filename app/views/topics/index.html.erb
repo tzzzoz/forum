@@ -1,0 +1,58 @@
+<div class="subheader">
+	<h1>Topics</h1>
+</div>
+<div id="content">
+	<div id="nav" class="clearfix">
+		<div class="topic_nav" id="<%=current_user.id%>">
+			<%= link_to current_user.name, topics_path, :remote => true %>
+		</div>
+	</div>
+	<div id="topics">
+		<%= render "partials/core", :core => current_user %><%= render 'topic' %>
+		<div id="nodes" class="clearfix">
+			<%= render :partial => "partials/topic", :collection => current_user.topics %>
+		</div>
+	</div>
+</div>
+<script>
+	String.prototype.trim = function() {
+		return this.replace(/^\s+|\s+$/g,"");
+	}
+	function post(str){
+		auto = document.getElementById(str);
+		if (auto.value.trim() != ''){
+			var data = $("#new_" + str).serialize();
+			$("#new_" + str)[0].reset();
+			if (str == "topic")
+				str = "";
+			$.post("/topics/" + str, data);
+		}
+	}
+	$(document).ready(function() {
+		$("#new_topic").keypress(function(event) {
+			if (event.keyCode == '13') {
+				post("topic");
+				event.preventDefault();
+			}
+		});
+		$("#new_neighborhood").keypress(function(event) {
+			if (event.keyCode == '13') {
+				post("neighborhood");
+				event.preventDefault();
+			}
+		});
+		$(".topic_outer").live({
+			mouseenter:
+				function () {
+					$(this).find('a.del_topic').show();
+					$(this).find('a.add_topic').show();
+				},
+			mouseleave:
+				function () {
+					$(this).find('a.del_topic').hide();
+					$(this).find('a.add_topic').hide();
+				}
+			}
+		);
+	 });
+</script>

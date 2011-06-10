@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Forum::Application.load_tasks
+Dream::Application.load_tasks

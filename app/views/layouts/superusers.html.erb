@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dream</title>
+  <%= stylesheet_link_tag :all, :cache => 'superuser' %>
+  <%= javascript_include_tag :defaults, :cache => 'superuser' %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+<div id="superuser_container">
+	<div id="header">
+		<%= link_to 'Users', superusers_users_url %> | 
+		<%= link_to 'Questions', superusers_questions_url %> | 
+		<%= link_to 'Topics', superusers_topic_url %> | 
+		<%= link_to 'Neighbors', superusers_neighbor_url %>
+	</div>
+	<%= yield %>
+</div>
+</body>
+</html>

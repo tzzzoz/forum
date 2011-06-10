@@ -1,0 +1,31 @@
+<div class="dialog">
+	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+	  <%= devise_error_messages! %>
+	<fieldset>
+			<div class="field">
+				<%= f.label :name %>
+				<%= f.text_field :name %>
+			</div>
+			<div class="field">
+				<%= f.label :email %>
+				<%= f.text_field :email %>
+			</div>
+			<div class="field">
+				<%= f.label :password %>
+				<%= f.password_field :password %>
+			</div>
+			<div class="field">
+				<%= f.label :password_confirmation %>
+				<%= f.password_field :password_confirmation %>
+			</div>
+		</fieldset>
+		<fieldset class="submitSet">
+			<%= f.submit "Sign Up", :class => "submit" %>
+		</fieldset>
+	<% end %>
+</div>
+<div class="dialog msg">
+	Already have an account? &nbsp;
+	<%= link_to "Sign In", new_session_path(resource_name) %>
+</div>
+

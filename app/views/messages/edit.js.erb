@@ -1,0 +1,5 @@
+$("#message_<%=@message.id%> .excerpt").html("<%= escape_javascript(render 'message', :message => @message)%>");
+$(".edit_message #message_body").focus().blur(function(){
+	var data = $('.edit_message').serialize();
+	$.post("/messages/<%=@message.id%>", data);
+});

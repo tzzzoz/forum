@@ -1,0 +1,8 @@
+<%= div_for question do %>
+	<div class="excerpt">
+		<span><%= safe_html question.markdown4short %></span>
+		<div><%= safe_html question.markdown4long %></div>
+	</div>
+	<%= render "partials/small_topics", :topics => question.topics %>
+<% end %>
+

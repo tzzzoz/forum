@@ -1,0 +1,2 @@
+$("#new_answer").remove();
+$("#answers").append("<%= escape_javascript(render 'partials/answer', :answer => @answer)%>");

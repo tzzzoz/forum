@@ -1,0 +1,83 @@
+<table>
+	<tbody>
+			<tr>
+				<th>Name</th>
+				<th>Amount</th>
+			</tr>
+			<tr>
+				<%= form_tag({:controller => "superusers", :action => "recharge"}, :remote => true ) do %>
+				<td>
+					<%= text_field_tag :name, {}, :autocomplete => autocomplete_user_name_users_path, :class => "auto autocomplete" %>
+				</td>
+				<td>
+					<%= text_field_tag :amount, {}, :class => "auto" %>
+				</td>
+				<td>
+					<%= submit_tag 'Recharge' %>
+				</td>
+				<td><div id="recharge"></div></td>
+				<% end %>
+			</tr>
+		
+			<tr>
+				<th>Name</th>
+				<th>Roles</th>
+			</tr>
+			<tr>
+				<%= form_tag({:controller => "superusers", :action => "role_manage"}, :remote => true ) do %>
+				<td>
+					<%= text_field_tag :name, {}, :autocomplete => autocomplete_user_name_users_path, :class => "auto autocomplete" %>
+				</td>
+				<td>
+					<% roles = ["root", "moderator", "author"] %>
+					<% count = 0%>
+					<% roles.each do |role| %>
+					  <%= check_box_tag 'roles[]', count = count + 1 %>
+					  <%= label_tag role %>
+					<% end %>
+				</td>
+				<td>
+					<%= submit_tag 'Roles Change' %>
+				</td>
+				<td><div id="role_manage"></div></td>
+				<% end %>
+			</tr>
+		
+	</tbody>
+</table>
+<table>
+	<tbody>
+		<th>Name</th>
+		<th>E-Mail</th>
+		<th>Money</th>
+		<th>Topics Count</th>
+		<th>Questions</th>
+		<th>Answers</th>
+		<th>Comments</th>
+		<th>Created_at</th>
+		<th>Current_sign_in_at</th>
+		<th>Current_sign_in_ip</th>
+		<th>Last_sign_in_at</th>
+		<th>Last_sign_in_ip</th>
+		<th>Sign_in_count</th>
+		<th>Updated_at</th>
+		<% @users.each do |user| %>
+		<tr>
+			<td><%= user.name %></td>
+			<td><%= user.email %></td>
+			<td><%= user.money %></td>
+			<td><%= user.topics.count %></td>
+			<td><%= user.questions.count %></td>
+			<td><%= user.answers.count %></td>
+			<td><%= user.comments.count %></td>
+			<td><%= user.created_at.strftime("%H:%M:%S %m/%d/%Y").downcase %></td>
+			<td><%= user.current_sign_in_at.strftime("%H:%M:%S %m/%d/%Y").downcase if user.current_sign_in_at %></td>
+			<td><%= user.current_sign_in_ip %></td>
+			<td><%= user.last_sign_in_at.strftime("%H:%M:%S %m/%d/%Y").downcase if user.last_sign_in_at %></td>
+			<td><%= user.last_sign_in_ip %></td>
+			<td><%= user.sign_in_count %></td>
+			<td><%= user.updated_at.strftime("%H:%M:%S %m/%d/%Y").downcase %></td>
+		</tr>
+		<% end %>		
+	</tbody>
+</table>

@@ -1,0 +1,4 @@
+<%= form_tag({:controller => "topics", :action => "neighborhood"}, :remote => true, :id => "new_neighborhood") do %>
+	<%= hidden_field_tag :neighbor, neighbor %>
+	<%= text_field_tag :neighborhood, {}, :autocomplete => autocomplete_topic_name_topics_path, :class => "auto" %>
+<% end %>

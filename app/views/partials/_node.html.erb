@@ -1,0 +1,4 @@
+<%= render "partials/core", :core => node %><%= render 'neighbor', :neighbor => node.id %>
+<div id="nodes" class="clearfix">
+	<%= render :partial => "partials/topic", :collection => node.neighbors %>
+</div>

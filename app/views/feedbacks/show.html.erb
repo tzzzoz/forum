@@ -1,0 +1,25 @@
+<div id="content">
+	<%= div_for @feedback do %>
+		<div class="post">
+			<div class="post_row">
+				<%= render 'partials/name_headline', :user => @feedback.user, :anonymous => @feedback.anonymous %>
+			</div>
+			<div class="post_text">
+				<div><%= safe_html @feedback.body %></div>
+			</div>
+			<div class="post_row">
+				<div class="operation">
+					<%= link_to t('edit'), [:edit,@feedback] %>
+					<span class="bullet"> · </span>
+					<%= link_to t('reply'), new_feedback_comment_url(:feedback_id => @feedback.id), :remote => true, :id => 'reply' %>
+					<span class="bullet"> · </span>
+					<span class="post_timestamp"><%= @feedback.created_at.strftime("%l:%M %p").downcase %></span>
+				</div>
+				<div class="comments">
+					<%= render :partial => "partials/comment", :collection => @feedback.comments %>
+				</div>
+				<%= render "comments/comment", :m0del => @feedback %>
+			</div>
+		</div>
+	<% end -%>
+</div>

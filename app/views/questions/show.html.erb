@@ -1,0 +1,42 @@
+<div class="subheader">
+	<h1><%= cny(@question.sum) %></h1>
+</div>
+<div id="content">
+	<%= div_for @question do %>
+		<div class="post">
+			<div class="post_row">
+				<%= render 'partials/name_headline', :user => @question.user, :anonymous => @question.anonymous %>
+			</div>
+			<div class="post_text">
+				<div><%= safe_html @question.markdown4short %></div>
+				<div><%= safe_html @question.markdown4long %></div>
+			</div>
+			<div class="small_topics">
+			<%= @question.topics.map {|topic| content_tag(:a, topic.name, :href => tagged_questions_path(:id => topic.id), :class => "item_topic")}.to_sentence.html_safe %>
+			</div>
+			<div class="post_row">
+				<div class="operation">
+					<%= link_to t('edit'), [:edit,@question] %>
+					<span class="bullet"> · </span>
+					<%= link_to t('reply'), new_question_comment_url(:question_id => @question.id), :remote => true, :id => 'reply' %>
+					<span class="bullet"> · </span>
+					<span class="post_timestamp"><%= @question.created_at.strftime("%l:%M %p").downcase %></span>
+				</div>
+				<div class="comments">
+					<%= render :partial => "partials/comment", :collection => @question.comments %>
+				</div>
+				<%= render "comments/comment", :m0del => @question %>
+			</div>
+		</div>
+	<% end -%>
+	<div id="answers">
+		<div class="subheader">
+			<h1><%= @question.answers.count %> <%= t 'answers_count' %></h1>
+		</div>
+		<%= render :partial => "partials/answer", :collection => @question.answers %>
+	</div>
+	<% if !@question.answers.where(:user_id => current_user.id).present? and @question.user != current_user %>
+		<h1>Send Your Answer</h1>
+		<%= render @answer = @question.answers.build %>
+	<% end %>
+</div>

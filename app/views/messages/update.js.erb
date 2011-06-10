@@ -1,0 +1,1 @@
+$("#message_<%= @message.id%>").replaceWith("<%= escape_javascript(render 'partials/message', :message => @message)%>");

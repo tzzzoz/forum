@@ -1,0 +1,6 @@
+<div id="content">
+	<h1><%= @questions.count %> Answers You've Given</h1>
+	<div class="questions" class="clearfix">
+		<%= render :partial => "partials/my_question", :collection => @questions, :as => :question %>
+	</div>
+</div>

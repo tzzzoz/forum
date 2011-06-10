@@ -1,0 +1,19 @@
+<%= div_for topic do %>
+<% 
+	if current_user.topics.include?(topic)
+		style = "topic_outer my"
+	else
+		style = "topic_outer ornot"
+	end
+%>
+<div class="<%= style %>">
+	<div class="topic_inner">
+		<%= link_to topic.name, topic, :remote => true %>
+	</div>
+	<% if style == "topic_outer my" %>
+		<%= link_to '', topic, :method => :delete, :confirm => "Are you sure?", :remote => true, :class => "del_topic" %>
+	<% else %>
+		<%= link_to '', add_url(:id => topic.id), :remote => true, :class => "add_topic" %>
+	<% end %>
+</div>
+<% end %>

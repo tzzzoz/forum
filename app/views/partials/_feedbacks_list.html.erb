@@ -1,0 +1,10 @@
+<div id="feedback_item_<%= feedback.id%>" class="feedback_item">
+		<div class="feedback_item_row">
+			<div class="feedback_item_short_text"><%=link_to feedback.excerpt, feedback %></div>
+			<div class="feedback_item_text"><%= feedback.body %>
+				<span class="bullet"> · </span>
+				<span class="item_timestamp"><%= time_ago_in_words feedback.created_at %><%= t 'ago' %></span>
+				<span class="item_userstamp"><%= t 'from' %><%= feedback.user.name%></span>
+			</div>
+		</div>
+</div>

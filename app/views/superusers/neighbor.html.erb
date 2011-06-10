@@ -1,0 +1,18 @@
+<table>
+	<tbody>
+	<tr>
+		<th>One</th>
+		<th>One</th>
+		<th>Accepted</th>
+	</tr>
+		<% @topics.each do |topic| %>
+			<% topic.neighbors.each do |neighbor| %>
+			<tr id="<%= topic.id %>_<%= neighbor.id %>">
+				<td><%= topic.name %></td>
+				<td><%= neighbor.name %></td>
+				<td><%= link_to 'Remove', superusers_destroy_url(:one_id => topic.id, :another_id => neighbor.id), :remote => true %></td>
+			</tr>
+			<% end %>
+		<% end %>
+	</tbody>
+</table>

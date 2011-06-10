@@ -1,0 +1,5 @@
+$("#topics").html("<%= escape_javascript(render 'partials/index' )%>");
+
+while($("#nav").children().size()>1){
+	$("#nav").children().eq(-1).remove();
+}

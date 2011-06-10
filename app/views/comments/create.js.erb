@@ -1,0 +1,2 @@
+$("#<%= @name %>_<%= @m0del.id %> #new_comment")[0].reset();
+$("#<%= @name %>_<%= @m0del.id %> .comments").append("<%= escape_javascript(render 'partials/comment', :comment => @comment)%>");

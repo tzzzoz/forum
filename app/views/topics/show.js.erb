@@ -1,0 +1,16 @@
+$("#topics").html("<%= escape_javascript(render 'partials/node', :node => @node )%>");
+
+flag = false;
+for(i=0; i < $("#nav").children().size(); i++){
+	if ($("#nav").children().eq(i).attr('id') == "<%= @nav.id %>"){
+		flag = true;
+		while($("#nav").children().size()-(i+1)>0){
+			$("#nav").children().eq(-1).remove();
+		}
+		break;
+	}
+}
+
+if (flag == false){
+	$("#nav").append("<%= escape_javascript(render 'partials/nav', :nav => @nav )%>");
+}

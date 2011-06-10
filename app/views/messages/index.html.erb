@@ -1,0 +1,9 @@
+<div class="subheader">
+	<h1>Messages</h1>
+</div>
+<div id="content">
+	<%= render 'message', :message => Message.new %>
+	<div id="messages">
+		<%= render :partial => "partials/message", :collection => @messages %>
+	</div>
+</div>

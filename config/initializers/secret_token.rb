@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Forum::Application.config.secret_token = 'ec5c68d27c874c0d2d668d2b69b009b6de436e134d0f5fd1495f936e2cf5b74cd3e9486904bc2fede1886a96259098f0a6491cdf38b2607cac70153712707e7c'
+Dream::Application.config.secret_token = '7c91dc11c9319997f5003f5e05723ab520b85746d5595b1195a45b06e2be068d322bbe06a12bd028c24b7538b55a5d6c810ca7dcb0a2c4e9f52dd5559e36f99e'
